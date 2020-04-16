@@ -1,18 +1,13 @@
 pipeline {
-    agent { 
-		dockerfile {
-			filename 'Dockerfile'
-			args '--privileged -v /app:/app'
-		} 
-	}
+    agent none
     stages {
-	stage('Build') {
-            steps {
-				sh 'docker run --publish 3000:3000 --detach --name docker-jenkins'
-                sh 'npm install'
-            }
-        }
-        stage('Deliver') {
+        stage('Build') {
+			agent { 
+				dockerfile {
+					filename 'Dockerfile'
+					args '--privileged -v /app:/app'
+				} 
+			}
             steps {
                 sh 'npm start'
             }
