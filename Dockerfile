@@ -8,4 +8,6 @@ RUN npm install
 
 EXPOSE 3000
 
-COPE . .
+COPY . .
+
+CMD ["npm", "start"]
