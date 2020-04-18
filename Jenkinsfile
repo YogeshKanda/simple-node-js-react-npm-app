@@ -8,6 +8,9 @@ pipeline {
 					args '--privileged -v /app:/app'
 				} 
 			}
+			steps {
+                sh ' '
+            }
         }
 		stage('Deliver') {
 			steps {
