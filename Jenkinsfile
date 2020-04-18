@@ -8,7 +8,9 @@ pipeline {
 					args '--privileged -v /app:/app'
 				} 
 			}
-            steps {
+        }
+		stage('Deliver') {
+			steps {
                 sh 'npm start'
             }
         }
