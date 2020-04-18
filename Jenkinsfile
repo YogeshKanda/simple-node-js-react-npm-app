@@ -9,7 +9,7 @@ pipeline {
 				} 
 			}
             steps {
-                sh ' '
+                sh 'npm start'
             }
         }
     }
