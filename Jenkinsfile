@@ -1,15 +1,9 @@
 pipeline {
-    agent none
+    agent { dockerfile true }
     stages {
         stage('Build') {
-			agent { 
-				dockerfile {
-					filename 'Dockerfile'
-					args '--privileged -v /app:/app'
-				} 
-			}
 			steps {
-                sh ' '
+                sh 'npm install'
             }
         }
 		stage('Deliver') {
@@ -17,5 +11,13 @@ pipeline {
                 sh 'npm start'
             }
         }
+    }
+	post { 
+        success { 
+            echo 'I will always say Hello again!'
+        }
+		failure{
+			echo 'Build Failed'
+		}
     }
 }
